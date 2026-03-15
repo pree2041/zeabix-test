@@ -1,0 +1,14 @@
+[
+  {
+    "weight": 10.0,
+    "area": "Chiang Mai",
+    "time": "2026-01-01T10:00:00Z",
+    "basePrice": 300.0
+  },
+  {
+    "weight": 25.5,
+    "area": "Bangkok",
+    "time": "2026-01-02T12:00:00Z",
+    "basePrice": 750.0
+  }
+]

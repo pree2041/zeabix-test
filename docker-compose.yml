@@ -1,0 +1,61 @@
+services:
+  rabbitmq:
+    image: rabbitmq:3-management
+    container_name: rabbitmq
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    healthcheck:
+      test: ["CMD", "rabbitmq-diagnostics", "-q", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  rule-management-api:
+    build:
+      context: .
+      dockerfile: RuleManagement.API/Dockerfile
+    container_name: rule-management-api
+    ports:
+      - "8084:8080"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+
+  pricing-api:
+    build:
+      context: .
+      dockerfile: Pricing.API/Dockerfile
+    container_name: pricing-api
+    ports:
+      - "8082:8080"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - RuleServiceUrl=http://rule-management-api:8080
+      - RabbitMQ__Host=rabbitmq
+      - RabbitMQ__Port=5672
+      - RabbitMQ__UserName=guest
+      - RabbitMQ__Password=guest
+    depends_on:
+      rabbitmq:
+        condition: service_healthy
+      rule-management-api:
+        condition: service_started
+
+  gateway-api:
+    build:
+      context: .
+      dockerfile: Gateway.API/Dockerfile
+    container_name: gateway-api
+    ports:
+      - "8080:8080"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - PricingServiceUrl=http://pricing-api:8080
+      - RuleManagementServiceUrl=http://rule-management-api:8080
+    depends_on:
+      - pricing-api
+      - rule-management-api
+
+networks:
+  default:
+    name: pricing-system-network

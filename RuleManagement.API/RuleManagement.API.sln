@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.36811.4 d17.14
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RuleManagement.API", "RuleManagement.API.csproj", "{334A94A4-98BE-49D6-A131-79F97678567A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{334A94A4-98BE-49D6-A131-79F97678567A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{334A94A4-98BE-49D6-A131-79F97678567A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{334A94A4-98BE-49D6-A131-79F97678567A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{334A94A4-98BE-49D6-A131-79F97678567A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {AAE087D3-49FC-49C1-8F14-E8AE32040FB4}
+	EndGlobalSection
+EndGlobal
